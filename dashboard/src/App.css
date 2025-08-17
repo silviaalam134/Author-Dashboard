@@ -1,0 +1,174 @@
+/* General app layout */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: row;
+  background-color: #f5f5f5;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Sidebar styling */
+.sidebar {
+  background-color: #3E4E5E; /* professional dark blue-gray */
+  min-height: 100vh;
+  width: 220px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  color: #FFFFFF;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  position: relative; /* needed for footer positioning */
+}
+
+/* Collapsed sidebar */
+.sidebar.collapsed {
+  width: 60px;
+  padding: 20px 10px;
+}
+
+/* Sidebar toggle button */
+.sidebar button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  background-color: #52606A; /* hover color as default button */
+  color: #FFFFFF;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.sidebar button:hover {
+  background-color: #66788A; /* slightly lighter */
+}
+
+/* Sidebar links */
+.sidebar nav a {
+  color: #FFFFFF;
+  display: block;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.sidebar nav a:hover {
+  background-color: #52606A; /* hover effect */
+}
+
+/* Collapsed link text hidden */
+.sidebar.collapsed nav a {
+  text-align: center;
+  font-size: 0; /* hide text when collapsed */
+  padding: 10px 0;
+}
+
+/* Optional: icon placeholder when collapsed */
+.sidebar.collapsed nav a::before {
+  content: "•"; /* simple dot as placeholder icon */
+  font-size: 20px;
+  color: #FFFFFF;
+  display: block;
+  text-align: center;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: #d1d5db; /* lighter gray text */
+}
+
+.sidebar-footer small {
+  display: block;
+  margin: 2px 0;
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  padding: 25px;
+  overflow-x: auto;
+  font-size: 16px;
+  font-weight: 500;
+  transition: margin 0.3s ease;
+}
+
+/* Table wrapper for responsive scroll */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px 10px;
+  text-align: left;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Allow wrapping on small screens */
+@media (max-width: 768px) {
+  th, td {
+    white-space: normal;
+    font-size: 14px;
+    padding: 10px 8px;
+  }
+
+  form.mb-3 {
+    flex-direction: column;
+  }
+
+  form.mb-3 input,
+  form.mb-3 select {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+/* Published rows highlight */
+tr.published {
+  background-color: #d4edda !important;
+  font-weight: bold;
+}
+
+/* Hover effect for rows */
+tbody tr:hover {
+  background-color: #e9ecef;
+  transition: background 0.2s;
+}
+
+/* Pagination buttons */
+button {
+  transition: background 0.3s;
+  margin: 5px;
+  padding: 7px 12px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+button:hover {
+  background: lightgray;
+}
+
+button.active-page {
+  background-color: lightblue;
+  font-weight: bold;
+}
+
