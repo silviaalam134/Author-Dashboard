@@ -70,22 +70,22 @@ function MyArticles() {
   };
 
   return (
-    <div>
-      <h2>My Articles</h2>
+    <div style={{ padding: "30px" }}>
+      <h2 style={{ fontSize: "32px", fontWeight: "700", marginBottom: "25px" }}>My Articles</h2>
 
-      {/* Search & Filters: Side by Side */}
-      <Form className="mb-3" style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+      {/* Search & Filters */}
+      <Form className="mb-3" style={{ display: "flex", flexWrap: "wrap", gap: "15px", marginBottom: "30px" }}>
         <Form.Control
           type="text"
           placeholder="Search by title..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          style={{ flex: "1 1 200px" }}
+          style={{ flex: "1 1 250px", fontSize: "18px", padding: "12px", fontWeight: "500" }}
         />
         <Form.Select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          style={{ flex: "0 1 150px" }}
+          style={{ flex: "0 1 180px", fontSize: "16px", padding: "12px", fontWeight: "500" }}
         >
           <option value="">All Status</option>
           <option value="Published">Published</option>
@@ -94,7 +94,7 @@ function MyArticles() {
         <Form.Select
           value={categoryFilter}
           onChange={(e) => setCategoryFilter(e.target.value)}
-          style={{ flex: "0 1 150px" }}
+          style={{ flex: "0 1 180px", fontSize: "16px", padding: "12px", fontWeight: "500" }}
         >
           <option value="">All Categories</option>
           <option value="Tech">Tech</option>
@@ -108,8 +108,8 @@ function MyArticles() {
 
       {/* Responsive Table */}
       <div className="table-responsive">
-        <Table striped bordered hover responsive>
-          <thead>
+        <Table striped bordered hover responsive style={{ fontSize: "16px" }}>
+          <thead style={{ fontSize: "17px", fontWeight: "700" }}>
             <tr>
               <th>Title</th>
               <th>Status</th>
@@ -127,10 +127,10 @@ function MyArticles() {
           </thead>
           <tbody>
             {displayed.map((article) => (
-              <tr key={article.id} className={article.status === "Published" ? "published" : ""}>
+              <tr key={article.id} className={article.status === "Published" ? "published" : ""} style={{ fontSize: "16px", height: "50px" }}>
                 <td>{article.title}</td>
                 <td>
-                  <Badge pill bg={article.status === "Published" ? "success" : "warning"}>
+                  <Badge pill bg={article.status === "Published" ? "success" : "warning"} style={{ fontSize: "14px", fontWeight: "500" }}>
                     {article.status}
                   </Badge>
                 </td>
@@ -145,11 +145,12 @@ function MyArticles() {
       </div>
 
       {/* Pagination */}
-      <div style={{ marginTop: "10px" }}>
+      <div style={{ marginTop: "20px" }}>
         {[...Array(totalPages)].map((_, i) => (
           <button
             key={i}
             className={page === i + 1 ? "active-page" : ""}
+            style={{ fontSize: "16px", padding: "10px 15px", margin: "0 5px" }}
             onClick={() => setPage(i + 1)}
           >
             {i + 1}

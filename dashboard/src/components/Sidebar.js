@@ -10,20 +10,24 @@ function Sidebar() {
 
   return (
     <div className={collapsed ? "sidebar collapsed" : "sidebar"}>
+      {/* Toggle button */}
       <button onClick={toggleSidebar}>
-        {collapsed ? "→" : "←"} {/* Toggle icon */}
+        {collapsed ? "→" : "←"}
       </button>
 
+      {/* Navigation links */}
       <nav>
         <Link to="/">Profile</Link>
         <Link to="/articles">My Articles</Link>
       </nav>
 
-      {/* Footer */}
-      <div className="sidebar-footer">
-        <small>© 2025 WarmConnect</small>
-        <small>v1.0.0</small>
-      </div>
+      {/* Footer only when expanded */}
+      {!collapsed && (
+        <div className="sidebar-footer">
+          <small>© 2025 WarmConnect</small>
+          <small>v1.0.0</small>
+        </div>
+      )}
     </div>
   );
 }
