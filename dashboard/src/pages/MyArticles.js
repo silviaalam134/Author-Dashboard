@@ -3,18 +3,18 @@ import { Badge, Table, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const dummyArticles = [
-  { id: 1, title: "How to Learn React", status: "Published", category: "Tech", date: "2023-08-10", lastEdited: "2 days ago", views: 120 },
-  { id: 2, title: "Understanding JavaScript", status: "Draft", category: "JavaScript", date: "2024-01-15", lastEdited: "1 week ago", views: 80 },
-  { id: 3, title: "CSS Tips and Tricks", status: "Published", category: "Design", date: "2024-03-20", lastEdited: "3 days ago", views: 200 },
-  { id: 4, title: "Deploying Apps with Netlify", status: "Draft", category: "DevOps", date: "2024-04-10", lastEdited: "2 days ago", views: 50 },
-  { id: 5, title: "React Hooks Deep Dive", status: "Published", category: "React", date: "2024-05-15", lastEdited: "1 week ago", views: 180 },
-  { id: 6, title: "Async JS Explained", status: "Draft", category: "JavaScript", date: "2024-06-01", lastEdited: "1 day ago", views: 70 },
-  { id: 7, title: "State Management in Redux", status: "Published", category: "React", date: "2024-06-18", lastEdited: "3 days ago", views: 150 },
-  { id: 8, title: "React Router Tips", status: "Draft", category: "React", date: "2024-07-05", lastEdited: "5 days ago", views: 60 },
-  { id: 9, title: "Building a Todo App", status: "Published", category: "Tech", date: "2024-07-20", lastEdited: "2 days ago", views: 220 },
-  { id: 10, title: "Understanding Context API", status: "Draft", category: "React", date: "2024-08-01", lastEdited: "1 day ago", views: 90 },
-  { id: 11, title: "Optimizing React Performance", status: "Published", category: "React", date: "2024-08-10", lastEdited: "3 days ago", views: 140 },
-  { id: 12, title: "Unit Testing in React", status: "Draft", category: "Testing", date: "2024-08-15", lastEdited: "1 day ago", views: 40 },
+  { id: 1, title: "How to Learn React", status: "Published", category: "Tech", date: "2019-03-10", lastEdited: "2 days ago", views: 120 },
+  { id: 2, title: "Understanding JavaScript", status: "Draft", category: "JavaScript", date: "2019-06-15", lastEdited: "1 week ago", views: 80 },
+  { id: 3, title: "CSS Tips and Tricks", status: "Published", category: "Design", date: "2020-01-20", lastEdited: "3 days ago", views: 200 },
+  { id: 4, title: "Deploying Apps with Netlify", status: "Draft", category: "DevOps", date: "2020-05-10", lastEdited: "2 days ago", views: 50 },
+  { id: 5, title: "React Hooks Deep Dive", status: "Published", category: "React", date: "2021-02-15", lastEdited: "1 week ago", views: 180 },
+  { id: 6, title: "Async JS Explained", status: "Draft", category: "JavaScript", date: "2021-07-01", lastEdited: "1 day ago", views: 70 },
+  { id: 7, title: "State Management in Redux", status: "Published", category: "React", date: "2022-03-18", lastEdited: "3 days ago", views: 150 },
+  { id: 8, title: "React Router Tips", status: "Draft", category: "React", date: "2022-08-05", lastEdited: "5 days ago", views: 60 },
+  { id: 9, title: "Building a Todo App", status: "Published", category: "Tech", date: "2023-01-20", lastEdited: "2 days ago", views: 220 },
+  { id: 10, title: "Understanding Context API", status: "Draft", category: "React", date: "2023-04-01", lastEdited: "1 day ago", views: 90 },
+  { id: 11, title: "Optimizing React Performance", status: "Published", category: "React", date: "2024-02-10", lastEdited: "3 days ago", views: 140 },
+  { id: 12, title: "Unit Testing in React", status: "Draft", category: "Testing", date: "2024-05-15", lastEdited: "1 day ago", views: 40 },
 ];
 
 const lastEditedPriority = {
@@ -31,7 +31,7 @@ function MyArticles() {
   const [statusFilter, setStatusFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
-  const itemsPerPage = 3;
+  const itemsPerPage = 4; // 4 items per page
 
   let filteredArticles = dummyArticles.filter(
     (article) =>
@@ -144,18 +144,34 @@ function MyArticles() {
         </Table>
       </div>
 
-      {/* Pagination */}
-      <div style={{ marginTop: "20px" }}>
+      {/* Pagination with jump arrows */}
+      <div style={{ marginTop: "20px", display: "flex", alignItems: "center", gap: "5px" }}>
+        <button
+          onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+          style={{ fontSize: "16px", padding: "10px 15px" }}
+          disabled={page === 1}
+        >
+          «
+        </button>
+
         {[...Array(totalPages)].map((_, i) => (
           <button
             key={i}
             className={page === i + 1 ? "active-page" : ""}
-            style={{ fontSize: "16px", padding: "10px 15px", margin: "0 5px" }}
+            style={{ fontSize: "16px", padding: "10px 15px" }}
             onClick={() => setPage(i + 1)}
           >
             {i + 1}
           </button>
         ))}
+
+        <button
+          onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
+          style={{ fontSize: "16px", padding: "10px 15px" }}
+          disabled={page === totalPages}
+        >
+          »
+        </button>
       </div>
     </div>
   );
