@@ -56,7 +56,7 @@ function Profile() {
       {/* Short Bio */}
       <div
         style={{
-          backgroundColor: "#eaf6ff",
+          backgroundColor: "#d4ecf6ff",
           padding: "10px 14px",
           borderRadius: "8px",
         }}
@@ -72,7 +72,7 @@ function Profile() {
       {/* Statistics */}
       <div style={{ display: "flex", gap: "12px" }}>
         {[
-          { value: "12", label: "Articles", color: "#3498db", bg: "#f1f8ff" },
+          { value: "12", label: "Articles", color: "#3498db", bg: "#ddebf9ff" },
           { value: "2500", label: "Views", color: "#e67e22", bg: "#fff5e6" },
           { value: "5", label: "Categories", color: "#27ae60", bg: "#f0f9f0" },
         ].map((stat, idx) => (
@@ -91,7 +91,7 @@ function Profile() {
             <span
               key={idx}
               style={{
-                backgroundColor: "#ffefc4",
+                backgroundColor: "#f5e5baff",
                 padding: "4px 10px",
                 borderRadius: "6px",
                 fontSize: "12px",

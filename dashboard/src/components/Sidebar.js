@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import silviaImg from "../assets/silvia.jpg"; // updated path
 
 function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
@@ -10,6 +11,21 @@ function Sidebar() {
 
   return (
     <div className={collapsed ? "sidebar collapsed" : "sidebar"}>
+      {/* Profile Picture */}
+      <div style={{ textAlign: "center", marginBottom: "20px" }}>
+        <img
+          src={silviaImg}
+          alt="Profile"
+          style={{
+            width: collapsed ? "50px" : "100px",
+            height: collapsed ? "50px" : "100px",
+            borderRadius: "50%",
+            objectFit: "cover",
+            transition: "all 0.3s ease",
+          }}
+        />
+      </div>
+
       {/* Toggle button */}
       <button
         onClick={toggleSidebar}
